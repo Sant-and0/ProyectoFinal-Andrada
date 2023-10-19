@@ -3,7 +3,7 @@ let tazaCambio = []
 axios.get('https://api.exchangeratesapi.io/latest?base=USD&symbols=EUR,JPY,GBP,AUD,CAD,CHF,CNY,SEK,NZD,MXN,SGD,HKD,NOK,KRW,TRY,INR,RUB,BRL,ZAR,ARS', { timeout: 5000 })
   .then(response => {
     tazaCambio = Object.entries(response.data.rates).map(([code, rate]) => ({code, rate}))
-    tazaCambio.push({code: 'USD', rate: 1}); // The base currency is USD
+    tazaCambio.push({code: 'EUR', rate: 1}); // The base currency is EUR
 v
     // Generate a list of available currencies
     const currencyList = document.createElement('ul')
