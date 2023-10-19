@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Conversor de Moneda</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Conversor de Moneda</h1>
+        <h2>Tu asistente personal de cambio de divisas</h2>
+        <p>Ingresa la cantidad que quieres convertir y hacia que tipo de divisa, luego haz click para obtener el resultado</p>
+        
+        <div class="formulario">
+            <label for="desdeMoneda">Desde Divisa</label>
+            <select id="desdeMoneda" onchange="storeInput()">
+                <option value="USD">USD</option>
+                <option value="EUR">EUR</option>
+                <option value="JPY">JPY</option>
+                <option value="GBP">GBP</option>
+                <option value="AUD">AUD</option>
+                <option value="CAD">CAD</option>
+                <option value="CHF">CHF</option>
+                <option value="CNY">CNY</option>
+                <option value="SEK">SEK</option>
+                <option value="NZD">NZD</option>
+                <option value="MXN">MXN</option>
+                <option value="SGD">SGD</option>
+                <option value="HKD">HKD</option>
+                <option value="NOK">NOK</option>
+                <option value="KRW">KRW</option>
+                <option value="TRY">TRY</option>
+                <option value="INR">INR</option>
+                <option value="RUB">RUB</option>
+                <option value="BRL">BRL</option>
+                <option value="ZAR">ZAR</option>
+                <option value="ARS">ARS</option>
+            </select>
+        </div>
+        
+        <div class="formulario">
+            <label for="monto">Monto:</label>
+            <input type="number" id="monto" min="0" onchange="storeInput()">
+        </div>
+        
+        <div class="formulario">
+            <label for="haciaMoneda">Hacia Divisa</label>
+            <select id="haciaMoneda" onchange="storeInput()">
+                <option value="USD">USD</option>
+                <option value="EUR">EUR</option>
+                <option value="JPY">JPY</option>
+                <option value="GBP">GBP</option>
+                <option value="AUD">AUD</option>
+                <option value="CAD">CAD</option>
+                <option value="CHF">CHF</option>
+                <option value="CNY">CNY</option>
+                <option value="SEK">SEK</option>
+                <option value="NZD">NZD</option>
+                <option value="MXN">MXN</option>
+                <option value="SGD">SGD</option>
+                <option value="HKD">HKD</option>
+                <option value="NOK">NOK</option>
+                <option value="KRW">KRW</option>
+                <option value="TRY">TRY</option>
+                <option value="INR">INR</option>
+                <option value="RUB">RUB</option>
+                <option value="BRL">BRL</option>
+                <option value="ZAR">ZAR</option>
+                <option value="ARS">ARS</option>
+            </select>
+        </div>
+
+        <button onclick="cuentaConversion()">¡Convertir!</button>
+        <p id="resultado"></p>
+        <div id="availableCurrencies"></div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
