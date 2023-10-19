@@ -1,18 +1,10 @@
 let tazaCambio = []
 
-axios.get('https://api.exchangeratesapi.io/latest?base=USD&symbols=EUR,JPY,GBP,AUD,CAD,CHF,CNY,SEK,NZD,MXN,SGD,HKD,NOK,KRW,TRY,INR,RUB,BRL,ZAR,ARS', { timeout: 5000 })
+axios.get('https://api.exchangerate-api.com/v4/latest/USD')
   .then(response => {
-    tazaCambio = Object.entries(response.data.rates).map(([code, rate]) => ({code, rate}))
-    tazaCambio.push({code: 'EUR', rate: 1}); // The base currency is EUR
-v
-    // Generate a list of available currencies
-    const currencyList = document.createElement('ul')
-    tazaCambio.forEach(moneda => {
-      const listItem = document.createElement('li')
-      listItem.textContent = moneda.code
-      currencyList.appendChild(listItem)
-    })
-    document.getElementById('availableCurrencies').appendChild(currencyList)
+    tazaCambio = Object.entries(response.data.rates).filter(([code]) => 
+      ["USD","EUR","JPY","GBP","AUD","CAD","CHF","CNY","SEK","NZD","MXN","SGD","HKD","NOK","KRW","TRY","INR","RUB","BRL","ZAR","ARS"].includes(code)
+    ).map(([code, rate]) => ({code, rate}))
   })
   .catch(error => {
     console.error(`Failed to fetch exchange rates: ${error}`)
@@ -23,7 +15,7 @@ v
 function resultadoCambio(divisaDesde, divisaHacia) {
     let desdeRate = tazaCambio.find(moneda => moneda.code === divisaDesde).rate
     let haciaRate = tazaCambio.find(moneda => moneda.code === divisaHacia).rate
-    return haciaRate / desdeRate
+    return (haciaRate / desdeRate)
 }
 
 function convertir(monto, divisaDesde, divisaHacia) {
